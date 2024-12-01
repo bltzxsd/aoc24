@@ -8,8 +8,7 @@ parse :: FilePath -> IO ([Int], [Int])
 parse path = do
     content <- readFile path
     let rows = map (map read . words) (lines content) :: [[Int]]
-    let (xs, ys) = unzip [(x, y) | [x, y] <- rows]
-    return (xs, ys)
+    return (unzip [(x, y) | [x, y] <- rows])
 
 -- part 1
 -- sort the lists, and sum the |x-y| between list
