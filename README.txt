@@ -1,1 +1,1 @@
-my answers to Advent of Code 2024 in haskell
+solutions to advent of code 2024 :D
