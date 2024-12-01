@@ -20,17 +20,11 @@ partOne xs ys = do
 -- part 2
 -- we only need to convert the right list to a dictionary in terms of left list.
 -- look up value and multiply directly
-
--- accumulate numbers over an empty hashmap and if num exists,
--- we increase our count (+) or we just add (num:1) to the map
-countDupes :: [Int] -> M.HashMap Int Int
-countDupes = foldl (\acc x -> M.insertWith (+) x 1 acc) M.empty
-
 partTwo :: [Int] -> [Int] -> IO ()
-partTwo xs ys = do
-    let counts = countDupes ys
-    -- lookup default ftw!
-    print $ sum $ map (\n -> n * M.lookupDefault 0 n counts) xs
+partTwo xs ys = print $ sum [n * freq n | n <- xs]
+  where
+    counts = M.fromListWith (+) [(y, 1) | y <- ys]
+    freq n = M.lookupDefault 0 n counts
 
 main :: IO ()
 main = do

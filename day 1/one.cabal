@@ -1,5 +1,5 @@
 cabal-version:      3.0
-name:               aocDay1
+name:               one
 version:            0.1.0.0
 -- synopsis:
 -- description:
@@ -8,17 +8,15 @@ author:             bltzxsd
 maintainer:         59281378+bltzxsd@users.noreply.github.com
 -- copyright:
 build-type:         Simple
-extra-doc-files:    CHANGELOG.md
--- extra-source-files:
 
 common warnings
     ghc-options: -Wall
 
-executable aocDay1
+executable one
     import:           warnings
     main-is:          Main.hs
     -- other-modules:
     -- other-extensions:
-    build-depends:    unordered-containers ^>= 0.2.20, base ^>=4.17.2.1
-    hs-source-dirs:   app
+    build-depends:    directory ^>= 1.3.7.1, unordered-containers ^>= 0.2.20, base ^>=4.17.2.1
+    hs-source-dirs:   src
     default-language: Haskell2010
