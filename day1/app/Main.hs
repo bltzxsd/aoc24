@@ -1,7 +1,6 @@
 -- aoc 2024 day 1 both parts
 module Main where
 
-import qualified Data.HashMap.Internal.Strict as M.HashMap
 import qualified Data.HashMap.Strict as M
 import Data.List (sort)
 
