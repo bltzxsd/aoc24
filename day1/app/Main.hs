@@ -22,22 +22,16 @@ partOne xs ys = do
 -- we only need to convert the right list to a dictionary in terms of left list.
 -- look up value and multiply directly
 
+-- accumulate numbers over an empty hashmap and if num exists,
+-- we increase our count (+) or we just add (num:1) to the map
 countDupes :: [Int] -> M.HashMap Int Int
--- if list 
 countDupes = foldl (\acc x -> M.insertWith (+) x 1 acc) M.empty
 
 partTwo :: [Int] -> [Int] -> IO ()
 partTwo xs ys = do
     let counts = countDupes ys
-    -- there _must_ be a better way to do this
-    print $
-        sum $
-            map
-                ( \n -> case M.HashMap.lookup n counts of
-                    Just c -> n * c
-                    Nothing -> 0
-                )
-                xs
+    -- lookup default ftw!
+    print $ sum $ map (\n -> n * M.lookupDefault 0 n counts) xs
 
 main :: IO ()
 main = do
